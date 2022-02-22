@@ -2,7 +2,7 @@ require File.expand_path('lib/machineid/version', __dir__)
 
 Gem::Specification.new do |spec|
   spec.name = 'machineid'
-  spec.version = machineid::VERSION
+  spec.version = MachineID::VERSION
   spec.authors = ['Aleem Isiaka']
   spec.email = ['aleemisiaka@gmail.com']
   spec.description = "Ruby GEM to Get a machine's ID"

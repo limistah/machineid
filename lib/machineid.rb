@@ -58,11 +58,11 @@ module MachineID
       if self.mac?
         result.split('IOPlatformUUID')[1].split("\n")[0].gsub(/\=|\s+|\"/i, '')
       elsif self.windows?
-        result.split('REG_SZ')[1].replace(/\r+|\n+|\s+/i, '')
+        result.split('REG_SZ')[1].gsub(/\r+|\n+|\s+/i, '')
       elsif self.linux?
-        result.replace(/\r+|\n+|\s+/i, '')
+        result.gsub(/\r+|\n+|\s+/i, '')
       elsif self.bsd?
-        result.replace(/\r+|\n+|\s+/i, '')
+        result.gsub(/\r+|\n+|\s+/i, '')
       else
         'Platform not supported. Please report your platform and architecture in a new Github issue'
         exit(1)
@@ -73,7 +73,7 @@ module MachineID
       cmd = self.getCommand
       result = self.expose?(`#{cmd}`)
       return result if original == true
-      self.hash?(result)
+      self.hash?(result.downcase)
     end
   end
 end
